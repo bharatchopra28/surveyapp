@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { BrowserRouter, Route } from "react-router-dom";
 
-import Header from './Header';
-import Landing from './Landing';
-import Dashboard from './Dashboard';
-import SurveyNew from './surveys/SurveyNew';
-import { fetchUser } from '../actions';
+import Header from "./Header";
+import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
+import { fetchUser } from "../actions";
 
 class App extends Component {
 	componentDidMount() {
@@ -19,10 +19,25 @@ class App extends Component {
 				<BrowserRouter>
 					<div>
 						<Header />
-						<div style={{ margin: 20 }}>
-							<Route exact path='/' component={Landing} />
-							<Route exact path='/surveys' component={Dashboard} />
-							<Route exact path='/surveys/new' component={SurveyNew} />
+						<div
+							style={{
+								marginLeft: 100,
+								marginRight: 100,
+								marginTop: 20,
+								marginBottom: 20
+							}}
+						>
+							<Route exact path="/" component={Landing} />
+							<Route
+								exact
+								path="/surveys"
+								component={Dashboard}
+							/>
+							<Route
+								exact
+								path="/surveys/new"
+								component={SurveyNew}
+							/>
 						</div>
 					</div>
 				</BrowserRouter>
