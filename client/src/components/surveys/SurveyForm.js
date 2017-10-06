@@ -50,7 +50,8 @@ class SurveyForm extends React.Component {
 function validate(values) {
 	const errors = {};
 
-	errors.emails = validateEmails(values.emails || "");
+	errors.recipients = validateEmails(values.recipients || "");
+	errors.from = validateEmails(values.from || "");
 
 	_.map(FIELDS, ({ name }) => {
 		if (!values[name]) {
