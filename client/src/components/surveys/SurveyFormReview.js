@@ -6,7 +6,13 @@ import { withRouter } from "react-router-dom";
 import { submitSurvey } from "../../actions";
 import formFields from "./formFields";
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
+const SurveyFormReview = ({
+	onCancel,
+	formValues,
+	submitSurvey,
+	history,
+	error
+}) => {
 	const reviewFields = _.map(formFields, ({ name, label }) => {
 		return (
 			<div key={name}>
@@ -18,6 +24,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 
 	return (
 		<div>
+			<div className="red-text">{error}</div>
 			<h5>Please confirm your entries</h5>
 			{reviewFields}
 			<button className="yellow darken-3 btn-flat" onClick={onCancel}>
@@ -35,7 +42,10 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 };
 
 const mapStateToProps = state => {
-	return { formValues: state.form.surveyForm.values };
+	return {
+		formValues: state.form.surveyForm.values,
+		error: state.errors.error
+	};
 };
 
 export default connect(mapStateToProps, { submitSurvey })(
